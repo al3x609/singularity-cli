@@ -11,7 +11,7 @@ import sys
 
 
 def stop(self, name=None, sudo=False):
-    '''start an instance. This is done by default when an instance is created.
+    '''stop an instance. This is done by default when an instance is created.
 
        Parameters
        ==========
@@ -29,7 +29,7 @@ def stop(self, name=None, sudo=False):
     check_install()
 
     subgroup = 'instance.stop'
-    if get_singularity_version().find("version 3"):
+    if ( get_singularity_version().find("version 3")  != -1 ):
         subgroup = ["instance", "stop"]
 
     cmd = self._init_command(subgroup)
