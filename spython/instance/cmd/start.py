@@ -23,7 +23,7 @@ def start(self, image=None, name=None, args=None, sudo=False, options=[], captur
                 [("--bind", "/tmp"),...]
 
        USAGE: 
-       singularity [...] instance.start [...] <container path> <instance name>
+       singularity [...] instance.start [...] <container path> <instance name> <args>
 
     '''        
     from spython.utils import ( run_command, 
@@ -48,7 +48,7 @@ def start(self, image=None, name=None, args=None, sudo=False, options=[], captur
 
     # Derive subgroup command based on singularity version
     subgroup = 'instance.start'
-    if get_singularity_version().find("version 3"):
+    if ( get_singularity_version().find("version 3")  != -1 ):
         subgroup = ["instance", "start"]
 
     cmd = self._init_command(subgroup)
